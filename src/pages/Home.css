@@ -1,0 +1,136 @@
+/* Home.css */
+
+/* Hero Section */
+.hero {
+  text-align: center;
+  padding: 100px 20px;
+  background: linear-gradient(135deg, #1f2937, #111827);
+  color: white;
+}
+
+.hero h1 {
+  font-size: 3rem;
+  font-weight: bold;
+  margin-bottom: 20px;
+}
+
+.hero p {
+  font-size: 1.25rem;
+  color: #d1d5db;
+}
+
+/* About Short Section */
+.about-short {
+  text-align: center;
+  padding: 60px 20px;
+  background-color: #111827;
+}
+
+.about-short h2 {
+  font-size: 2rem;
+  margin-bottom: 15px;
+  color: white;
+}
+
+.about-short p {
+  max-width: 700px;
+  margin: 0 auto 15px;
+  color: #d1d5db;
+  line-height: 1.6;
+}
+
+.link-more {
+  color: #22c55e; /* green-500 */
+  font-weight: 500;
+  text-decoration: none;
+  transition: all 0.3s ease;
+}
+
+.link-more:hover {
+  text-decoration: underline;
+  color: #16a34a; /* darker green */
+}
+
+/* News Section */
+.news-section {
+  padding: 60px 20px;
+  background-color: #1f2937;
+  color: white;
+  text-align: center;
+}
+
+.news-section h2 {
+  font-size: 2rem;
+  margin-bottom: 20px;
+}
+
+.news-section ul {
+  list-style: none;
+  padding: 0;
+  margin-bottom: 15px;
+}
+
+.news-section li {
+  margin-bottom: 10px;
+  color: #d1d5db;
+  font-size: 1rem;
+}
+
+/* Collaboration Photos Section */
+.collab-photos {
+  padding: 60px 20px;
+  background-color: #111827;
+  color: white;
+  text-align: center;
+}
+
+.collab-photos h2 {
+  font-size: 2rem;
+  margin-bottom: 20px;
+}
+
+.collab-photos .photos {
+  display: flex;
+  justify-content: center;
+  gap: 20px;
+  flex-wrap: wrap;
+}
+
+.collab-photos img {
+  width: 300px;
+  height: 200px;
+  object-fit: cover;
+  border-radius: 10px;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.collab-photos img:hover {
+  transform: scale(1.05);
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.5);
+}
+
+/* General page spacing */
+section {
+  margin-bottom: 50px;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .collab-photos .photos {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .collab-photos img {
+    width: 90%;
+    height: auto;
+  }
+
+  .hero h1 {
+    font-size: 2.2rem;
+  }
+
+  .hero p {
+    font-size: 1.1rem;
+  }
+}
