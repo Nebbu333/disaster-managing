@@ -2,6 +2,7 @@ import React from "react";
 import { Link } from "react-router-dom";
 import { motion } from "framer-motion";
 import "./Home.css";
+import Contact from "./Contact";
 
 const Home = () => {
   return (
@@ -29,6 +30,7 @@ const Home = () => {
           Click for More →
         </Link>
       </section>
+      <Contact />
 
       <section className="news-section">
         <h2>Daily Updates</h2>
