@@ -1,10 +1,22 @@
 /* Reset some default styles */
-body,
 html,
-ul {
+body {
+  height: 100%;
   margin: 0;
   padding: 0;
   font-family: Arial, sans-serif;
+}
+
+/* Layout fix to push footer to bottom */
+.app-container {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh; /* full viewport height */
+}
+
+.main-content {
+  flex: 1; /* take remaining space between navbar and footer */
+  min-height: 700px; /* minimum content height to allow scrolling */
 }
 
 /* Navbar */
@@ -14,6 +26,7 @@ ul {
   align-items: center;
   background-color: #007bff;
   padding: 10px 30px;
+  height: 70px; /* approximate navbar height */
 }
 
 .nav-left,
@@ -79,6 +92,10 @@ ul {
   color: white;
   padding: 20px 30px;
   text-align: center;
+  height: 100px; /* footer height stays same */
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
 }
 
 .footer-links {
