@@ -3,7 +3,7 @@ import "./Signup.css";
 
 const Signup = () => (
   <div className="page">
-    <h1>Sign Up</h1>
+    <h1>Sign Up as a Volunteer</h1>
     <form>
       <input type="text" placeholder="Full Name" />
       <input type="email" placeholder="Email" />

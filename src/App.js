@@ -8,6 +8,7 @@ import Login from "./pages/Login";
 import Signup from "./pages/Signup";
 import NavBar from "./components/NavBar";
 import Footer from "./components/Footer";
+import Dailynews from "./pages/Dailynews";
 import "./App.css";
 
 function App() {
@@ -24,6 +25,7 @@ function App() {
             <Route path="/testimonials" element={<Testimonials />} />
             <Route path="/login" element={<Login />} />
             <Route path="/signup" element={<Signup />} />
+            <Route path="/dailynews" element={<Dailynews />} />
           </Routes>
         </div>
         <Footer />
