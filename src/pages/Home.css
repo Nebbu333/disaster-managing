@@ -4,7 +4,7 @@
 .hero {
   position: relative; /* for overlay */
   text-align: center;
-  padding: 100px 20px;
+  padding: 100px 20px 150px 20px; /* added extra bottom padding for button */
   color: white;
   background-image: url("https://images.unsplash.com/photo-1531206715517-5c0ba140b2b8?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&w=1000&q=80");
   background-size: cover;
@@ -43,6 +43,28 @@
 .hero p {
   font-size: 1.25rem;
   color: #d1d5db;
+  margin-bottom: 40px;
+}
+
+/* Explore Button */
+.explore-btn {
+  position: relative;
+  z-index: 1;
+  display: inline-block;
+  background-color: #28a745;
+  color: white;
+  padding: 12px 30px;
+  font-size: 1.1rem;
+  font-weight: bold;
+  border-radius: 8px;
+  text-decoration: none;
+  transition: background 0.3s ease, transform 0.2s ease;
+  margin-top: 60px; /* added spacing to move button 2 lines down */
+}
+
+.explore-btn:hover {
+  background-color: #218838;
+  transform: scale(1.05);
 }
 
 /* About Short Section */
@@ -158,5 +180,10 @@ section {
 
   .hero p {
     font-size: 1.1rem;
+  }
+
+  .explore-btn {
+    padding: 10px 25px;
+    font-size: 1rem;
   }
 }

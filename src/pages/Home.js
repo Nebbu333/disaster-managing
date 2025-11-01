@@ -14,6 +14,9 @@ const Home = () => {
       <section className="hero">
         <h1>Welcome to Disaster Relief Volunteer System</h1>
         <p>Join us in making a difference when it matters most.</p>
+        <Link to="/about" className="explore-btn">
+          Explore
+        </Link>
       </section>
 
       <section className="about-short">
