@@ -21,11 +21,11 @@ const Home = () => {
         <p>Join us in making a difference when it matters most.</p>
 
         <div className="hero-buttons">
-          <Link to="/about" className="explore-btn">
-            Explore
-          </Link>
           <Link to="/contact" className="contact-btn">
             Contact Us
+          </Link>
+          <Link to="/Signup" className="contact-btn">
+            Sign Up
           </Link>
         </div>
       </section>

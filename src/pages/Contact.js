@@ -1,6 +1,5 @@
 import React, { useState, useEffect } from "react";
-import axios from "axios";
-import "./Contact.css"; // ✅ Make sure this file is in the same folder
+import "./Contact.css";
 
 function ContactPage() {
   const [formData, setFormData] = useState({
@@ -11,50 +10,75 @@ function ContactPage() {
     longitude: "",
   });
 
+  const [imagePreview, setImagePreview] = useState(null); // live preview
+  const [locationLoaded, setLocationLoaded] = useState(false);
+
+  // Auto GPS coordinates
   useEffect(() => {
     if (navigator.geolocation) {
       navigator.geolocation.getCurrentPosition(
-        (position) => {
+        (pos) => {
           setFormData((prev) => ({
             ...prev,
-            latitude: position.coords.latitude,
-            longitude: position.coords.longitude,
+            latitude: pos.coords.latitude,
+            longitude: pos.coords.longitude,
           }));
+          setLocationLoaded(true);
         },
-        (error) => {
-          console.error("Error getting location:", error);
-          alert("Unable to access your location.");
-        }
+        () => alert("Unable to get your location")
       );
-    } else {
-      alert("Your browser does not support GPS location.");
     }
   }, []);
 
-  const handleSubmit = async (e) => {
-    e.preventDefault();
-    try {
-      await axios.post("http://localhost:5000/api/contact", formData);
-      alert("✅ Message sent successfully!");
-      setFormData({
-        name: "",
-        email: "",
-        message: "",
-        latitude: "",
-        longitude: "",
-      });
-    } catch (error) {
-      console.error("Error sending message:", error);
-      alert("❌ Failed to send message.");
+  // Handle image selection and live preview
+  const handleImageChange = (e) => {
+    const file = e.target.files[0];
+    if (file) {
+      const reader = new FileReader();
+      reader.onload = () => {
+        setImagePreview(reader.result); // live preview
+      };
+      reader.readAsDataURL(file);
     }
+  };
+
+  // Submit form data to localStorage
+  const handleSubmit = (e) => {
+    e.preventDefault();
+
+    if (!locationLoaded) {
+      alert("GPS not ready yet. Please wait...");
+      return;
+    }
+
+    const messages = JSON.parse(localStorage.getItem("messages")) || [];
+    const newMessage = {
+      ...formData,
+      image: imagePreview,
+      id: Date.now(),
+    };
+    messages.push(newMessage);
+    localStorage.setItem("messages", JSON.stringify(messages));
+
+    alert("✅ Message submitted successfully!");
+
+    // Reset form
+    setFormData({
+      name: "",
+      email: "",
+      message: "",
+      latitude: "",
+      longitude: "",
+    });
+    setImagePreview(null);
+    setLocationLoaded(false);
   };
 
   return (
     <div className="contact-container">
       <h2>📩 Contact Us</h2>
       <p>
-        If there’s an emergency in your area or you’ve witnessed a disaster,
-        please contact us immediately.
+        If there’s an emergency or you’ve witnessed a disaster, submit here.
       </p>
 
       <form onSubmit={handleSubmit} className="contact-form">
@@ -80,13 +104,24 @@ function ContactPage() {
           }
           required
         />
+
+        {/* Image upload */}
+        <input type="file" accept="image/*" onChange={handleImageChange} />
+
+        {/* Live image preview */}
+        {imagePreview && (
+          <div className="preview-image">
+            <p>Live Preview:</p>
+            <img src={imagePreview} alt="Live Preview" />
+          </div>
+        )}
+
         <button type="submit">Send Message</button>
       </form>
 
-      {formData.latitude && formData.longitude ? (
+      {locationLoaded ? (
         <p className="location-info">
-          📍 Location captured:
-          <br />
+          📍 Location captured: <br />
           Latitude: {formData.latitude} <br />
           Longitude: {formData.longitude}
         </p>

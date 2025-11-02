@@ -6,15 +6,12 @@ const DailyNews = () => {
   const [visibleCount, setVisibleCount] = useState(6); // Show 6 news by default
 
   useEffect(() => {
-    // Fetch data from your friend's backend API
-    fetch("http://localhost:5000/api/news")
-      .then((response) => response.json())
-      .then((data) => {
-        // Sort by date (latest first)
-        const sorted = data.sort((a, b) => new Date(b.date) - new Date(a.date));
-        setNews(sorted);
-      })
-      .catch((error) => console.error("Error fetching news:", error));
+    // Load news from localStorage (uploaded via AdminDashboard)
+    const storedNews = JSON.parse(localStorage.getItem("dailyNews")) || [];
+    const sortedNews = storedNews.sort(
+      (a, b) => new Date(b.date) - new Date(a.date)
+    );
+    setNews(sortedNews);
   }, []);
 
   const handleShowMore = () => {
@@ -34,14 +31,13 @@ const DailyNews = () => {
               <div key={item.id} className="news-card">
                 <div className="news-image-container">
                   <img
-                    src={item.image}
+                    src={item.imageUrl}
                     alt={item.title}
                     className="news-image"
                   />
                 </div>
                 <div className="news-content">
                   <h3 className="news-heading">{item.title}</h3>
-                  <p className="news-text">{item.content}</p>
                   <p className="news-date">
                     {new Date(item.date).toLocaleDateString()}
                   </p>

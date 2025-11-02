@@ -76,49 +76,36 @@ function AdminDashboard() {
 
   const handleNewsUpload = (e) => {
     e.preventDefault();
+
+    if (!newsTitle.trim()) return alert("Please enter a news title!");
     if (!newsImage) return alert("Please select an image!");
 
     const reader = new FileReader();
     reader.readAsDataURL(newsImage);
 
     reader.onload = (event) => {
-      const img = new Image();
-      img.src = event.target.result;
-
-      img.onload = () => {
-        const canvas = document.createElement("canvas");
-        const maxWidth = 100;
-        const maxHeight = 100;
-        let width = img.width;
-        let height = img.height;
-
-        if (width > height) {
-          if (width > maxWidth) {
-            height = Math.round((height *= maxWidth / width));
-            width = maxWidth;
-          }
-        } else {
-          if (height > maxHeight) {
-            width = Math.round((width *= maxHeight / height));
-            height = maxHeight;
-          }
-        }
-
-        canvas.width = width;
-        canvas.height = height;
-        const ctx = canvas.getContext("2d");
-        ctx.drawImage(img, 0, 0, width, height);
-
-        const compressedDataUrl = canvas.toDataURL("image/jpeg", 0.7);
-        const newNews = {
-          id: Date.now(),
-          title: newsTitle,
-          imageUrl: compressedDataUrl,
-        };
-        setUploadedNews([newNews, ...uploadedNews]);
-        setNewsTitle("");
-        setNewsImage(null);
+      const newNews = {
+        id: Date.now(),
+        title: newsTitle,
+        imageUrl: event.target.result,
+        date: new Date().toISOString(),
       };
+
+      // Save to state
+      setUploadedNews([newNews, ...uploadedNews]);
+
+      // Save to localStorage for DailyNews dashboard
+      const existingNews = JSON.parse(localStorage.getItem("dailyNews")) || [];
+      localStorage.setItem(
+        "dailyNews",
+        JSON.stringify([newNews, ...existingNews])
+      );
+
+      // Clear inputs
+      setNewsTitle("");
+      setNewsImage(null);
+
+      alert("News uploaded successfully!");
     };
   };
 
