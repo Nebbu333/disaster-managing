@@ -3,7 +3,9 @@ import { Link } from "react-router-dom";
 import { motion } from "framer-motion";
 import "./Home.css";
 import Contact from "./Contact";
-import { AboutPreview } from "./About"; // ✅ Import short About section
+import { AboutPreview } from "./About";
+import { TestimonialsPreview } from "./Testimonials";
+import Collaboration from "../components/Collaboration";
 
 const Home = () => {
   return (
@@ -22,7 +24,7 @@ const Home = () => {
         </Link>
       </section>
 
-      {/* ✅ Imported About Section Preview */}
+      {/* About Preview Section */}
       <section className="about-short">
         <AboutPreview />
         <Link to="/about" className="link-more">
@@ -45,10 +47,18 @@ const Home = () => {
         </Link>
       </section>
 
-      {/* Collaborations */}
+      {/* Collaborations Section */}
       <section className="collab-photos">
         <h2>Our Previous Collaborations</h2>
-        <div className="photos"></div>
+        <Collaboration />
+      </section>
+
+      {/* Testimonials Preview Section */}
+      <section className="home-testimonials">
+        <TestimonialsPreview />
+        <Link to="/testimonials" className="link-more">
+          Read More Testimonials →
+        </Link>
       </section>
     </motion.div>
   );
