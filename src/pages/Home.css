@@ -4,7 +4,7 @@
 .hero {
   position: relative; /* for overlay */
   text-align: center;
-  padding: 100px 20px 150px 20px; /* added extra bottom padding for button */
+  padding: 100px 20px 150px 20px; /* extra bottom padding */
   color: white;
   background-image: url("https://images.unsplash.com/photo-1531206715517-5c0ba140b2b8?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&w=1000&q=80");
   background-size: cover;
@@ -19,12 +19,7 @@
   left: 0;
   width: 100%;
   height: 100%;
-  background-color: rgba(
-    0,
-    0,
-    0,
-    0.5
-  ); /* semi-transparent overlay for readability */
+  background-color: rgba(0, 0, 0, 0.5); /* semi-transparent overlay */
   z-index: 0;
 }
 
@@ -43,13 +38,22 @@
 .hero p {
   font-size: 1.25rem;
   color: #d1d5db;
-  margin-bottom: 40px;
+  margin-bottom: 20px;
 }
 
-/* Explore Button */
-.explore-btn {
+/* Hero Buttons - stacked vertically */
+.hero-buttons {
+  display: flex;
+  flex-direction: column; /* stack vertically */
+  align-items: center; /* center horizontally */
+  gap: 20px; /* spacing between buttons */
+  margin-top: 40px; /* spacing below text */
   position: relative;
   z-index: 1;
+}
+
+/* Explore Button (green) */
+.explore-btn {
   display: inline-block;
   background-color: #28a745;
   color: white;
@@ -59,11 +63,28 @@
   border-radius: 8px;
   text-decoration: none;
   transition: background 0.3s ease, transform 0.2s ease;
-  margin-top: 60px; /* added spacing to move button 2 lines down */
 }
 
 .explore-btn:hover {
   background-color: #218838;
+  transform: scale(1.05);
+}
+
+/* Contact Us Button (blue) */
+.contact-btn {
+  display: inline-block;
+  background-color: #007bff;
+  color: white;
+  padding: 12px 30px;
+  font-size: 1.1rem;
+  font-weight: bold;
+  border-radius: 8px;
+  text-decoration: none;
+  transition: background 0.3s ease, transform 0.2s ease;
+}
+
+.contact-btn:hover {
+  background-color: #0056b3;
   transform: scale(1.05);
 }
 
@@ -157,6 +178,18 @@
   box-shadow: 0 8px 20px rgba(0, 0, 0, 0.5);
 }
 
+/* Home Testimonials Section */
+.home-testimonials {
+  padding: 60px 20px;
+  background-color: #f7fafc;
+  text-align: center;
+}
+
+.home-testimonials .link-more {
+  margin-top: 20px;
+  display: inline-block;
+}
+
 /* General page spacing */
 section {
   margin-bottom: 50px;
@@ -182,19 +215,14 @@ section {
     font-size: 1.1rem;
   }
 
-  .explore-btn {
-    padding: 10px 25px;
+  .explore-btn,
+  .contact-btn {
+    width: 70%;
+    padding: 10px 20px;
     font-size: 1rem;
   }
-}
 
-.home-testimonials {
-  padding: 60px 20px;
-  background-color: #f7fafc;
-  text-align: center;
-}
-
-.home-testimonials .link-more {
-  margin-top: 20px;
-  display: inline-block;
+  .hero-buttons {
+    gap: 15px;
+  }
 }

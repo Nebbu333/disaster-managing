@@ -19,9 +19,15 @@ const Home = () => {
       <section className="hero">
         <h1>Welcome to Disaster Relief Volunteer System</h1>
         <p>Join us in making a difference when it matters most.</p>
-        <Link to="/about" className="explore-btn">
-          Explore
-        </Link>
+
+        <div className="hero-buttons">
+          <Link to="/about" className="explore-btn">
+            Explore
+          </Link>
+          <Link to="/contact" className="contact-btn">
+            Contact Us
+          </Link>
+        </div>
       </section>
 
       {/* About Preview Section */}
