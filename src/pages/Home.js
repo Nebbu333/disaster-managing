@@ -35,12 +35,12 @@ const Home = () => {
 
       {/* News Section */}
       <section className="news-section">
-        <h2>Daily Updates</h2>
+        <h2>Daily News</h2>
         <ul>
           <li>Flood relief operation ongoing in Zone A.</li>
           <li>New volunteers registered in Addis Ababa region.</li>
         </ul>
-        <Link to="/testimonials" className="link-more">
+        <Link to="/Dailynews" className="link-more">
           Read More News →
         </Link>
       </section>

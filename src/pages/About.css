@@ -1,20 +1,106 @@
-/* About.css */
+/* 🌍 General Styles */
+body {
+  font-family: "Poppins", Arial, sans-serif;
+  background-color: #f7fafc;
+  margin: 0;
+  padding: 0;
+  color: #222;
+}
 
-.page {
-  padding: 60px 20px;
+/* ✳️ About Page Container */
+.about-page {
   max-width: 900px;
-  margin: 0 auto;
+  margin: 80px auto;
+  background: #ffffff;
+  padding: 50px;
+  border-radius: 16px;
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.08);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.about-page:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15);
+}
+
+/* 🔠 Title Styling */
+.about-page h1 {
+  font-size: 2.2rem;
+  color: #007b83;
   text-align: center;
+  margin-bottom: 30px;
+  letter-spacing: 1px;
+  text-transform: uppercase;
 }
 
-.page h1 {
-  font-size: 2.5rem;
-  color: #22c55e;
+/* 📝 Paragraph Styling */
+.about-page p {
+  font-size: 1.05rem;
+  line-height: 1.8;
+  color: #333;
   margin-bottom: 20px;
+  text-align: justify;
 }
 
-.page p {
-  font-size: 1.1rem;
-  color: #d1d5db;
-  line-height: 1.6;
+/* ✨ Subtle fade-in animation */
+.about-page {
+  animation: fadeIn 1s ease-in-out;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* 💡 About Preview Section (used on Home) */
+.about-preview {
+  background: linear-gradient(135deg, #00a19d, #2bc4ad);
+  color: #fff;
+  padding: 40px 20px;
+  border-radius: 16px;
+  text-align: center;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+  max-width: 800px;
+  margin: 60px auto;
+  animation: fadeIn 1s ease-in-out;
+}
+
+.about-preview h2 {
+  font-size: 2rem;
+  margin-bottom: 15px;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+
+.about-preview p {
+  font-size: 1.05rem;
+  line-height: 1.7;
+  max-width: 700px;
+  margin: 0 auto;
+}
+
+/* 📱 Responsive Design */
+@media (max-width: 768px) {
+  .about-page {
+    padding: 30px 20px;
+  }
+
+  .about-page h1 {
+    font-size: 1.8rem;
+  }
+
+  .about-preview h2 {
+    font-size: 1.6rem;
+  }
+
+  .about-preview p,
+  .about-page p {
+    font-size: 1rem;
+  }
 }
