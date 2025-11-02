@@ -9,11 +9,13 @@ import Signup from "./pages/Signup";
 import NavBar from "./components/NavBar";
 import Footer from "./components/Footer";
 import Dailynews from "./pages/Dailynews";
+import ScrollToTop from "./components/ScrollToTop";
 import "./App.css";
 
 function App() {
   return (
     <Router>
+      <ScrollToTop />
       <div className="app-container">
         <NavBar />
         <div className="main-content">
